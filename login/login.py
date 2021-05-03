@@ -6,7 +6,7 @@ root.geometry('1920x1080')
 root.title('Login')
 root['background'] = '#c4c4c4'
 
-root.iconbitmap('F:\PycharmProject\Tkinter_Storemanagement\images\login_key.ico')
+root.iconbitmap('C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/login_key.ico')
 
 loginBox = Frame(root, bg="#8e8b8b")
 loginBox.pack(side=TOP, pady=100)
