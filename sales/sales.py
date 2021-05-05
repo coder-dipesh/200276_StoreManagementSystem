@@ -1,7 +1,7 @@
 from tkinter import *
 from PIL import ImageTk, Image
 root = Tk()
-root.title('Store Management System - Stock In')
+root.title('Store Management System - Sales')
 root.geometry('1920x1080')
 
 
@@ -122,7 +122,7 @@ add_stock_frame = LabelFrame(frame,)
 add_stock_frame.grid(row=3,column=0,padx=350,pady=40,sticky='e')
 
 
-add_stock = Button(add_stock_frame,padx=60, pady=30,text="Add Stock")
+add_stock = Button(add_stock_frame,padx=60, pady=30,text="Sold")
 add_stock.grid(row=0,column=0,)
 
 
