@@ -1,7 +1,7 @@
 from tkinter import *
 from PIL import ImageTk, Image
 root = Tk()
-root.title('Store Management System - Stock In')
+root.title('Store Management System - Update')
 root.geometry('1920x1080')
 
 
@@ -105,28 +105,28 @@ price.grid(row=4,column=0,sticky='nw')
 price_ = Entry(frameRight)
 price_.grid(row=4, column=2,padx=10,pady=10)
 
-# Creating Footer frame
-
-footer = LabelFrame(frame,width=400)
-footer.grid(row=3,column=0,padx=20,sticky='nw')
-
-description_label = Label(footer,text= "Product Description")
-description_label.grid(row=0,column=0,sticky="nw")
-
-description= Text(footer,height=10,width=54,font=('firacode',12))
-description.grid(row=1,column=0,sticky='nw')
+# # Creating Footer frame
+#
+# footer = LabelFrame(frame,width=400)
+# footer.grid(row=3,column=0,padx=20,sticky='nw')
+#
+# description_label = Label(footer,text= "Product Description")
+# description_label.grid(row=0,column=0,sticky="nw")
+#
+# description= Text(footer,height=10,width=54,font=('firacode',12))
+# description.grid(row=1,column=0,sticky='nw')
 
 # Creating Add stock section frame
 
 add_stock_frame = LabelFrame(frame,)
-add_stock_frame.grid(row=3,column=0,padx=350,pady=40,sticky='e')
+add_stock_frame.grid(row=3,column=0,padx=350,pady=40,)
 
 
-add_stock = Button(add_stock_frame,padx=60, pady=30,text="Add Stock")
+add_stock = Button(add_stock_frame,padx=60, pady=30,text="Update")
 add_stock.grid(row=0,column=0,)
 
 
 
 
 
-mainloop()
+root.mainloop()
