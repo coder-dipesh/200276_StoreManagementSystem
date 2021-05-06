@@ -3,126 +3,132 @@ from PIL import ImageTk, Image
 root = Tk()
 root.title('Store Management System - Stock In')
 root.geometry('1920x1080')
-
+root.iconbitmap('C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/store.ico')
+root['background'] = '#304562'
 
 # Creating root Frame for all sub frames
-frame = Frame(root)
+frame = Frame(root,bg='#304562',)
 frame.grid(row=0, column=0, sticky='nsew')
 
 # Creating Header Frame for Title stuff
-header = LabelFrame(frame, height=100, width=1920)
+header = LabelFrame(frame, height=100, width=1920,bg='#304562')
 header.grid(row=0, column=0)
 
-logo = ImageTk.PhotoImage(Image.open("C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/g.png"))
-logo_icon = Label(header, image=logo)
+logo = ImageTk.PhotoImage(Image.open("C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/store-white.png"))
+logo_icon = Label(header, image=logo,bg='#304562')
 logo_icon.grid(row=0, column=0, padx=5, pady=5)
 
-title = Label(header, text="Store Management System", font=('firacode', 21))
-title.grid(row=0, column=1, padx=450)
+title = Label(header, text="Store Management System",bg='#304562',fg='#f7f7f7', font=('HandVetica',37))
+title.grid(row=0, column=1, padx=350)
 
-show_time = Label(header, text="3: 24 : PM", font=('digital-7', 21))
+show_time = Label(header, text="3: 24 : PM", font=('digital-7', 21),bg='#304562',fg='#f7f7f7')
 show_time.grid(row=0, column=2, padx=50)
 
 # Creating frame to insert back button
-back_btn = ImageTk.PhotoImage(Image.open("C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/back.png"))
+back_btn = ImageTk.PhotoImage(Image.open("C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/back-arrow-white.png"))
 
 back_home = Frame(frame,height=40, width=50)
 back_home.grid(row=1,column=0,padx=10,pady=10,sticky='nw')
 
-back_home_btn = Button(back_home, image=back_btn,relief=FLAT, padx=20, pady=20)
+back_home_btn = Button(back_home,bg='#304562',image=back_btn,relief=FLAT, padx=20, pady=20)
 back_home_btn.grid(row=0, column=0)
 
 
 # Creating Product Details Section
 
-frameRight = LabelFrame(frame, height=600, width=800)
-frameRight.grid(row=2, column=0, padx=20, pady=40, sticky='nw')
+productFrame = LabelFrame(frame, height=600, pady=10,padx=10,width=800,bg='#091b33')
+productFrame.grid(row=2, column=0, padx=20, pady=40, sticky='nw')
 
-title = Label(frameRight, text="Product Details")
-title.grid(row=0,column=1, padx=80)
+title = Label(productFrame,bg='#091b33',fg='#f7f7f7', text="Product Details", font=('Code New Roman',14))
+title.grid(row=0,column=1, padx=70)
 
-id = Label(frameRight, text='Bill No')
-id.grid(row=1,column=0, sticky='nw')
+billno = Label(productFrame,bg='#091b33', fg='#f7f7f7', text='Bill No', font=('Code New Roman',14))
+billno.grid(row=1,column=0, sticky='nw')
 
-id_entry = Entry(frameRight)
-id_entry.grid(row=1, column=2,padx=10)
+billno_entry = Entry(productFrame)
+billno_entry.grid(row=1, column=2,padx=10, ipadx=50, ipady=10)
 
-product_name = Label(frameRight, text='Product Name')
-product_name.grid(row=2,column=0,pady=10,sticky='nw')
+productName = Label(productFrame,bg='#091b33',fg='#f7f7f7',  text='Product Name', font=('Code New Roman',14))
+productName.grid(row=2,column=0,pady=10,sticky='nw')
 
-pname_entry = Entry(frameRight)
-pname_entry.grid(row=2, column=2)
+productName_entry = Entry(productFrame)
+productName_entry.grid(row=2, column=2, ipadx=50, ipady=10)
 
-vendor = Label(frameRight, text='Product Quantity')
-vendor.grid(row=3,column=0)
+productQuantity = Label(productFrame,bg='#091b33',fg='#f7f7f7',  text='Product Quantity', font=('Code New Roman',14))
+productQuantity.grid(row=3,column=0)
 
-vendor_name= Entry(frameRight)
-vendor_name.grid(row=3, column=2,padx=10)
+productQuantity_entry= Entry(productFrame)
+productQuantity_entry.grid(row=3, column=2,padx=10, ipadx=50, ipady=10)
 
-price = Label(frameRight, text='Product Rate')
-price.grid(row=4,column=0,pady=10,sticky='nw')
+rate = Label(productFrame, bg='#091b33',fg='#f7f7f7', text='Product Rate', font=('Code New Roman',14))
+rate.grid(row=4,column=0,pady=10,sticky='nw')
 
-price_ = Entry(frameRight)
-price_.grid(row=4, column=2,padx=10,)
+rate_entry = Entry(productFrame)
+rate_entry.grid(row=4, column=2,padx=10, ipadx=50, ipady=10)
 
-total_price = Label(frameRight, text='Total Price')
-total_price.grid(row=5,column=0,sticky='nw')
+totalPrice = Label(productFrame,bg='#091b33',fg='#f7f7f7',  text='Total Price', font=('Code New Roman',14))
+totalPrice.grid(row=5,column=0,sticky='nw')
 
-total_price_entry = Entry(frameRight)
-total_price_entry.grid(row=5, column=2,pady=10,padx=10,)
+totalPrice_entry = Entry(productFrame)
+totalPrice_entry.grid(row=5, column=2,padx=10,ipadx=50, ipady=10)
 
 # Creating Vendor Details Section
 
 
-frameRight = LabelFrame(frame,height=300, width=400)
-frameRight.grid(row=2,column=0,padx=50,pady=40,sticky='ne' )
+vendorFrame = LabelFrame(frame, height=600, pady=10,padx=10,width=800,bg='#091b33')
+vendorFrame.grid(row=2, column=0, padx=20, pady=40, sticky='ne')
 
-title = Label(frameRight, text="Vendor Details")
-title.grid(row=0,column=1,padx=80)
+title = Label(vendorFrame,bg='#091b33',fg='#f7f7f7', text="Vendor Details", font=('Code New Roman',14))
+title.grid(row=0,column=1, padx=70)
 
+companyName = Label(vendorFrame,bg='#091b33', fg='#f7f7f7', text='Company Name', font=('Code New Roman',14))
+companyName.grid(row=1,column=0, sticky='nw')
 
-id = Label(frameRight, text='Company Name')
-id.grid(row=1,column=0,pady=10,sticky='nw')
+companyName_entry = Entry(vendorFrame)
+companyName_entry.grid(row=1, column=2,padx=10, ipadx=50, ipady=10)
 
-id_entry = Entry(frameRight)
-id_entry.grid(row=1, column=2,padx=10)
+address = Label(vendorFrame,bg='#091b33',fg='#f7f7f7',  text='Address', font=('Code New Roman',14))
+address.grid(row=2,column=0,pady=10,sticky='nw')
 
-product_name = Label(frameRight, text='Address')
-product_name.grid(row=2,column=0,sticky='nw',)
+address_entry = Entry(vendorFrame)
+address_entry.grid(row=2, column=2, ipadx=50, ipady=10)
 
-pname_entry = Entry(frameRight)
-pname_entry.grid(row=2, column=2)
+contactNumber = Label(vendorFrame,bg='#091b33',fg='#f7f7f7',  text='Contact Number', font=('Code New Roman',14))
+contactNumber.grid(row=3,column=0)
 
-vendor = Label(frameRight, text='Contact')
-vendor.grid(row=3,column=0,pady=10,sticky='nw')
+contactNumber_entry= Entry(vendorFrame)
+contactNumber_entry.grid(row=3, column=2,padx=10, ipadx=50, ipady=10)
 
-vendor_name= Entry(frameRight)
-vendor_name.grid(row=3, column=2,padx=10)
+email = Label(vendorFrame, bg='#091b33',fg='#f7f7f7', text='Email', font=('Code New Roman',14))
+email.grid(row=4,column=0,pady=10,sticky='nw')
 
-price = Label(frameRight, text='Email')
-price.grid(row=4,column=0,sticky='nw')
+email_entry = Entry(vendorFrame)
+email_entry.grid(row=4, column=2,padx=10, ipadx=50, ipady=10)
 
-price_ = Entry(frameRight)
-price_.grid(row=4, column=2,padx=10,pady=10)
+date = Label(vendorFrame,bg='#091b33',fg='#f7f7f7',  text='Date', font=('Code New Roman',14))
+date.grid(row=5,column=0,sticky='nw')
+
+date_entry = Entry(vendorFrame,)
+date_entry.grid(row=5, column=2,padx=10,ipadx=50, ipady=10)
 
 # Creating Footer frame
 
-footer = LabelFrame(frame,width=400)
+footer = LabelFrame(frame,width=400,bg='#091b33',borderwidth=0)
 footer.grid(row=3,column=0,padx=20,sticky='nw')
 
-description_label = Label(footer,text= "Product Description")
+description_label = Label(footer,text= "Product Description",padx=15,bg='#091b33',fg='#ffffff',font=('Code New Roman',14))
 description_label.grid(row=0,column=0,sticky="nw")
 
-description= Text(footer,height=10,width=54,font=('firacode',12))
+description= Text(footer,height=11,width=72,font=('Code New Roman',14))
 description.grid(row=1,column=0,sticky='nw')
 
 # Creating Add stock section frame
 
-add_stock_frame = LabelFrame(frame,)
+add_stock_frame = LabelFrame(frame,bg='#091b33',)
 add_stock_frame.grid(row=3,column=0,padx=350,pady=40,sticky='e')
 
 
-add_stock = Button(add_stock_frame,padx=60, pady=30,text="Add Stock")
+add_stock = Button(add_stock_frame,borderwidth=0,padx=60,bg='#06e6b0',fg='#091b33', pady=30,text="Add Stock",font=('Code New Roman',21))
 add_stock.grid(row=0,column=0,)
 
 
