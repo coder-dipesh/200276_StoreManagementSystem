@@ -1,7 +1,10 @@
+# Importing necessary module
 from tkinter import *
 from PIL import ImageTk, Image
 import time
+from datetime import datetime
 
+# Defining window
 root = Tk()
 root.geometry('1920x1080')
 root.title('Store Management System - Dashboard')
@@ -12,25 +15,42 @@ root.iconbitmap('C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/stor
 frame = Frame(root,bg='#304562',)
 frame.grid(row=0, column=0, sticky='nsew')
 
+
 # Creating Header Frame for Title stuff
 header = LabelFrame(frame, height=100, width=1920,bg='#304562',)
 header.grid(row=0, column=0)
 
+# Using logo
 logo = ImageTk.PhotoImage(Image.open("C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/store-white.png"))
 logo_icon = Label(header,bg='#304562',fg='#f7f7f7',image=logo)
 logo_icon.grid(row=0, column=0, padx=5,ipadx=25, pady=5)
 
+# Heading Title
 title = Label(header, bg='#304562',fg='#f7f7f7',text="Store Management System",font=('HandVetica',37))
 title.grid(row=0, column=1, padx=350)
 
-show_time = Label(header,bg='#304562',fg='#fbfbfb', text="3: 24 : PM",font=('digital-7', 21))
+# Creating clock
+def clock():
+    hour= time.strftime('%I')
+    minute = time.strftime('%M')
+    second = time.strftime('%S')
+    unit = time.strftime('%p')
+
+    show_time.config(text=hour + ':' + minute + ':' + second + ':' + unit)
+    show_time.after(1000,clock)
+
+#Displaying time
+show_time = Label(header,bg='#304562',fg='#fbfbfb', text="",font=('digital-7', 22))
 show_time.grid(row=0, column=2,padx=30)
 
+
+clock()
 
 # Creating Menu Frame for sub Button
 menu = LabelFrame(frame,pady=23, padx=80,bg='#091b33',borderwidth=0)
 menu.grid(row=1,column=0,sticky= NW,)
 
+# Buttons for sub page
 stock_in = Button(menu,padx=50,pady=30,text='Stock In',font=('Code New Roman',21),bg="#06e6b0",fg="#091b33",)
 stock_in.grid(row=0,column=0,padx=60,pady=17,ipady=15)
 
@@ -44,22 +64,33 @@ total = Button(menu,padx=70,pady=30, text='Total',font=('Code New Roman',21),bg=
 total.grid(row=3,column=0,padx=52,ipady=15,pady=17)
 
 # Creating frame for date and logout section
-# height=200
 
 sub_header = LabelFrame(frame,bg='#304562',borderwidth=0)
 sub_header.grid(row=1,column=0,columnspan=3,sticky=NE,ipady=10,)
 
-date_sec = Label(sub_header,fg='#f7f7f7',bg='#304562', text='2078/7/4',font=('digital-7',21))
+def date():
+    year = time.strftime('%Y')
+    month = time.strftime('%b')
+    day = time.strftime('%d')
+
+    date_sec.config(text=year + ' ' + month + ' ' + day )
+    date_sec.after(1000, date)
+
+# For displaying date
+date_sec = Label(sub_header, fg='#f7f7f7', bg='#304562', text='', font=('digital-7',21))
 date_sec.grid(row=0, column=0,ipady=10,sticky=NW,padx=318)
 
-icon_logout = ImageTk.PhotoImage(Image.open('C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/logout-white.png'))
+date()
 
+
+# Button with icon for logout
+icon_logout = ImageTk.PhotoImage(Image.open('C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/logout-white.png'))
 logout = Button(sub_header, bg='#304562',image=icon_logout,relief=FLAT)
 logout.grid(row=0,column=3,padx=100,ipady=12,)
 
 # Creating frame for calculator section
 
-# Creating Frame
+# Creating main frame for calculator
 calcFrame = LabelFrame(frame,bg='#091b33',borderwidth=0,padx=27,pady=15)
 calcFrame.grid(row=1, column=0,sticky=NE,padx=210,pady=200)
 
@@ -128,7 +159,7 @@ button_off.grid(row=1, column=3, columnspan=2, padx=5, pady=5)
 #         curtime = newtime
 #         clockLabel.config(text=curtime)
 #     clockLabel.after(200, tick, curtime)
-#
+
 # tick()  #start clock
 
 # calculator = LabelFrame(root,text="hello world good things takes time",pady=30, padx=20)
