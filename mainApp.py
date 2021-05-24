@@ -1,11 +1,10 @@
 # Importing necessary module
 import sqlite3
-import tkinter.messagebox
 from tkinter import *
 from PIL import ImageTk, Image
 import time
 from tkinter import messagebox
-
+from tkinter import ttk
 
 
 # -------------------------------------Creating database table --------------------------------------------------------#
@@ -30,8 +29,8 @@ from tkinter import messagebox
 # )
 # """)
 # print('Table created for Authentication.')
-#
-# # Committing and closing the database.
+
+# Committing and closing the database.
 # main_database.commit()
 # main_database.close()
 
@@ -39,7 +38,7 @@ from tkinter import messagebox
 
 # ---------------------------------------  Data storage table -------------------------------------------------------#
 # Database queries for Data storage
-# Giving database name
+# # Giving database name
 # main_database = sqlite3.connect('storemanagement.db')
 #
 # # # Initializing cursor
@@ -71,7 +70,7 @@ from tkinter import messagebox
 # ------------- Database for registration ------------------#
 
 # def popup():
-#     messagebox.showinfo('Added','Sucessfully')
+#     messagebox.showinfo('Added','Successfully')
 
 
 # ---------------------------------------------Stock In -----------------------------------------------------------#
@@ -140,6 +139,7 @@ def stockin():
     billno.grid(row=1, column=0, sticky='nw')
 
     billno_entry = Entry(productFrame, fg='#091b33', font=('Code New Roman', 10))
+    billno_entry.focus()
     billno_entry.grid(row=1, column=2, padx=5, ipadx=50, ipady=10)
 
     productName = Label(productFrame, bg='#091b33', fg='#f7f7f7', text='Product Name', font=('Code New Roman', 14))
@@ -225,7 +225,6 @@ def stockin():
     add_stock = Button(add_stock_frame, borderwidth=0, padx=60, bg='#06e6b0', fg='#091b33', pady=30, text="Add Stock",
                        font=('Code New Roman', 21), command=lambda:[stockin_data(), showinfo()])
     add_stock.grid(row=0, column=0, )
-
 
 
 def showinfo():
@@ -333,82 +332,21 @@ def sales_():
     billno.grid(row=1, column=0, sticky='nw')
 
     billno_entry_ = Entry(productFrame, fg='#091b33', font=('Code New Roman', 10))
+    billno_entry_.focus()
     billno_entry_.grid(row=1, column=2, padx=5, ipadx=50, ipady=10)
 
-    # productName = Label(productFrame, bg='#091b33', fg='#f7f7f7', text='Product Name', font=('Code New Roman', 14))
-    # productName.grid(row=2, column=0, pady=10, sticky='nw')
-    #
-    # productName_entry = Entry(productFrame, fg='#091b33', font=('Code New Roman', 10))
-    # productName_entry.grid(row=2, column=2, ipadx=50, ipady=10)
-    #
-    # productQuantity = Label(productFrame, bg='#091b33', fg='#f7f7f7', text='Product Quantity',
-    #                         font=('Code New Roman', 14))
-    # productQuantity.grid(row=3, column=0)
-    #
-    # productQuantity_entry = Entry(productFrame, fg='#091b33', font=('Code New Roman', 10))
-    # productQuantity_entry.grid(row=3, column=2, padx=10, ipadx=50, ipady=10)
-    #
-    # rate = Label(productFrame, bg='#091b33', fg='#f7f7f7', text='Product Rate', font=('Code New Roman', 14))
-    # rate.grid(row=4, column=0, pady=10, sticky='nw')
-    #
-    # rate_entry = Entry(productFrame, fg='#091b33', font=('Code New Roman', 10))
-    # rate_entry.grid(row=4, column=2, padx=10, ipadx=50, ipady=10)
-    #
-    # totalPrice = Label(productFrame, bg='#091b33', fg='#f7f7f7', text='Total Price', font=('Code New Roman', 14))
-    # totalPrice.grid(row=5, column=0, sticky='nw')
-    #
-    # totalPrice_entry = Entry(productFrame, fg='#091b33', font=('Code New Roman', 10))
-    # totalPrice_entry.grid(row=5, column=2, padx=10, ipadx=50, ipady=10)
-    #
-    # # Creating Vendor Details Section
-    #
-    # vendorFrame = LabelFrame(frame, pady=10, padx=5, bg='#091b33')
-    # vendorFrame.grid(row=2, column=0, pady=40, sticky='ne', padx=90)
-    #
-    # title = Label(vendorFrame, bg='#091b33', fg='#f7f7f7', text="Vendor Details", font=('Code New Roman', 14))
-    # title.grid(row=0, column=1, padx=70)
-    #
-    # companyName = Label(vendorFrame, bg='#091b33', fg='#f7f7f7', text='Company Name', font=('Code New Roman', 14))
-    # companyName.grid(row=1, column=0, sticky='nw')
-    #
-    # companyName_entry = Entry(vendorFrame, fg='#091b33', font=('Code New Roman', 10))
-    # companyName_entry.grid(row=1, column=2, padx=10, ipadx=50, ipady=10)
-    #
-    # address = Label(vendorFrame, bg='#091b33', fg='#f7f7f7', text='Address', font=('Code New Roman', 14))
-    # address.grid(row=2, column=0, pady=10, sticky='nw')
-    #
-    # address_entry = Entry(vendorFrame, fg='#091b33', font=('Code New Roman', 10))
-    # address_entry.grid(row=2, column=2, ipadx=50, ipady=10)
-    #
-    # contactNumber = Label(vendorFrame, bg='#091b33', fg='#f7f7f7', text='Contact Number', font=('Code New Roman', 14))
-    # contactNumber.grid(row=3, column=0)
-    #
-    # contactNumber_entry = Entry(vendorFrame, fg='#091b33', font=('Code New Roman', 10))
-    # contactNumber_entry.grid(row=3, column=2, padx=10, ipadx=50, ipady=10)
-    #
-    # email = Label(vendorFrame, bg='#091b33', fg='#f7f7f7', text='Email', font=('Code New Roman', 14))
-    # email.grid(row=4, column=0, pady=10, sticky='nw')
-    #
-    # email_entry = Entry(vendorFrame, fg='#091b33', font=('Code New Roman', 10))
-    # email_entry.grid(row=4, column=2, padx=10, ipadx=50, ipady=10)
-    #
-    # date = Label(vendorFrame, bg='#091b33', fg='#f7f7f7', text='Date', font=('Code New Roman', 14))
-    # date.grid(row=5, column=0, sticky='nw')
-    #
-    # date_entry = Entry(vendorFrame, fg='#091b33', font=('Code New Roman', 10))
-    # date_entry.grid(row=5, column=2, padx=10, ipadx=50, ipady=10)
 
-    # Creating Add stock section frame
+    # Creating Sales stock section frame
 
-    sales_stock_frame = LabelFrame(frame, bg='#091b33', )
-    sales_stock_frame.grid(row=3, column=0, padx=350, pady=40, )
+    sales_stock_frame = LabelFrame(frame, bg='#091b33')
+    sales_stock_frame.grid(row=3, column=0, padx=350, pady=40)
 
     sales_stock = Button(sales_stock_frame, borderwidth=0, padx=95, bg='#06e6b0', fg='#091b33', pady=30, text="Sales",
-                       font=('Code New Roman', 21),command=lambda:[sales_data(),message()])
+                         font=('Code New Roman', 21) , command=lambda: [sales_data() , message()])
     sales_stock.grid(row=0, column=0, )
 
 def message():
-    messagebox.showinfo('Removed','Deleted successfully',parent=sales)
+    messagebox.showinfo('Removed' , 'Data Deleted successfully.', parent=sales)
 # -------------------------------------------- End of sales --------------------------------------------------------#
 
 # -------------------------------------------- sales data -----------------------------------------------------#
@@ -422,7 +360,7 @@ def sales_data():
 
     billno_entry_.delete(0, END)
 
-    # messagebox.showinfo('Delete', 'Successfully Deleted')
+
 
     main_database.commit()
     main_database.close()
@@ -435,6 +373,7 @@ def sales_data():
 
 def update_():
     global billno_entry
+    global update
 
     update = Toplevel()
     update.title('Store Management System - Update')
@@ -476,7 +415,7 @@ def update_():
     # Creating Product Details Section
 
     productFrame = LabelFrame(frame, height=600, pady=10, padx=10, width=800, bg='#091b33')
-    productFrame.grid(row=2, column=0, padx=20, pady=40, sticky='nw')
+    productFrame.grid(row=2, column=0, padx=20, pady=40, )
 
     title = Label(productFrame, bg='#091b33', fg='#f7f7f7', text="Product Details", font=('Code New Roman', 14))
     title.grid(row=0, column=1, padx=70)
@@ -485,70 +424,8 @@ def update_():
     billno.grid(row=1, column=0, sticky='nw')
 
     billno_entry = Entry(productFrame)
+    billno_entry.focus()
     billno_entry.grid(row=1, column=2, padx=10, ipadx=50, ipady=10)
-
-    productName = Label(productFrame, bg='#091b33', fg='#f7f7f7', text='Product Name', font=('Code New Roman', 14))
-    productName.grid(row=2, column=0, pady=10, sticky='nw')
-
-    productName_entry = Entry(productFrame)
-    productName_entry.grid(row=2, column=2, ipadx=50, ipady=10)
-
-    productQuantity = Label(productFrame, bg='#091b33', fg='#f7f7f7', text='Product Quantity',
-                            font=('Code New Roman', 14))
-    productQuantity.grid(row=3, column=0)
-
-    productQuantity_entry = Entry(productFrame)
-    productQuantity_entry.grid(row=3, column=2, padx=10, ipadx=50, ipady=10)
-
-    rate = Label(productFrame, bg='#091b33', fg='#f7f7f7', text='Product Rate', font=('Code New Roman', 14))
-    rate.grid(row=4, column=0, pady=10, sticky='nw')
-
-    rate_entry = Entry(productFrame)
-    rate_entry.grid(row=4, column=2, padx=10, ipadx=50, ipady=10)
-
-    totalPrice = Label(productFrame, bg='#091b33', fg='#f7f7f7', text='Total Price', font=('Code New Roman', 14))
-    totalPrice.grid(row=5, column=0, sticky='nw')
-
-    totalPrice_entry = Entry(productFrame)
-    totalPrice_entry.grid(row=5, column=2, padx=10, ipadx=50, ipady=10)
-
-    # Creating Vendor Details Section
-
-    vendorFrame = LabelFrame(frame, pady=10, padx=5, bg='#091b33')
-    vendorFrame.grid(row=2, column=0, padx=90, pady=40, sticky='ne')
-
-    title = Label(vendorFrame, bg='#091b33', fg='#f7f7f7', text="Vendor Details", font=('Code New Roman', 14))
-    title.grid(row=0, column=1, padx=70)
-
-    companyName = Label(vendorFrame, bg='#091b33', fg='#f7f7f7', text='Company Name', font=('Code New Roman', 14))
-    companyName.grid(row=1, column=0, sticky='nw')
-
-    companyName_entry = Entry(vendorFrame)
-    companyName_entry.grid(row=1, column=2, padx=10, ipadx=50, ipady=10)
-
-    address = Label(vendorFrame, bg='#091b33', fg='#f7f7f7', text='Address', font=('Code New Roman', 14))
-    address.grid(row=2, column=0, pady=10, sticky='nw')
-
-    address_entry = Entry(vendorFrame)
-    address_entry.grid(row=2, column=2, ipadx=50, ipady=10)
-
-    contactNumber = Label(vendorFrame, bg='#091b33', fg='#f7f7f7', text='Contact Number', font=('Code New Roman', 14))
-    contactNumber.grid(row=3, column=0)
-
-    contactNumber_entry = Entry(vendorFrame)
-    contactNumber_entry.grid(row=3, column=2, padx=10, ipadx=50, ipady=10)
-
-    email = Label(vendorFrame, bg='#091b33', fg='#f7f7f7', text='Email', font=('Code New Roman', 14))
-    email.grid(row=4, column=0, pady=10, sticky='nw')
-
-    email_entry = Entry(vendorFrame)
-    email_entry.grid(row=4, column=2, padx=10, ipadx=50, ipady=10)
-
-    date = Label(vendorFrame, bg='#091b33', fg='#f7f7f7', text='Date', font=('Code New Roman', 14))
-    date.grid(row=5, column=0, sticky='nw')
-
-    date_entry = Entry(vendorFrame, )
-    date_entry.grid(row=5, column=2, padx=10, ipadx=50, ipady=10)
 
     # Creating Add stock section frame
 
@@ -560,7 +437,7 @@ def update_():
 
 
 def update_data():
-    global updatepopup
+    global data_update_popup
     global productName_entry
     global productQuantity_entry
     global rate_entry
@@ -570,26 +447,33 @@ def update_data():
     global contactNumber_entry
     global email_entry
     global date_entry
+    global key_value
 
-    updatepopup = Toplevel()
-    updatepopup.title('Store Management System - Update')
-    updatepopup.geometry('800x1000')
-    updatepopup.iconbitmap('C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/store.ico')
-    updatepopup['background'] = '#304562'
+    data_update_popup = Toplevel()
+    data_update_popup.title('Store Management System - Update')
+    data_update_popup.geometry('800x1000')
+    data_update_popup.iconbitmap('C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/store.ico')
+    data_update_popup['background'] = '#304562'
 
 
     main_database = sqlite3.connect('storemanagement.db')
 
-    c = main_database.cursor()
+    # c = main_database.cursor()
+    cursor = main_database.cursor()
 
-    record_id = billno_entry.get()
+    key_value = billno_entry.get()
+    print(key_value)
 
-    c.execute("SELECT * FROM data_storage WHERE oid= " + record_id)
+    cursor.execute("SELECT * FROM data_storage WHERE bill_no = "+ key_value)
 
-    datas = c.fetchall()
+    infos = cursor.fetchall()
+
+    print(infos)
+
+    billno_entry.delete(0, END)
 
     #Design for popup
-    frame = Frame(updatepopup, bg='#304562', )
+    frame = Frame(data_update_popup, bg='#304562', )
     frame.grid(row=0, column=0, sticky='nsew')
 
     productFrame = LabelFrame(frame, height=600, pady=10, padx=10, width=800, bg='#091b33')
@@ -602,6 +486,7 @@ def update_data():
     productName.grid(row=2, column=0, pady=10, sticky='nw')
 
     productName_entry = Entry(productFrame)
+    productName_entry.focus()
     productName_entry.grid(row=2, column=2, ipadx=50, ipady=10)
 
     productQuantity = Label(productFrame, bg='#091b33', fg='#f7f7f7', text='Product Quantity',
@@ -661,7 +546,7 @@ def update_data():
     date_entry = Entry(vendorFrame)
     date_entry.grid(row=5, column=2, padx=10, ipadx=50, ipady=10)
 
-    for data in datas:
+    for data in infos:
         productName_entry.insert(0, data[1])
         productQuantity_entry.insert(0, data[2])
         rate_entry.insert(0, data[3])
@@ -672,8 +557,12 @@ def update_data():
         email_entry.insert(0, data[8])
         date_entry.insert(0, data[9])
 
-    save = Button(frame, text='SAVE', font=('Code New Roman', 21), bg="#06e6b0", fg="#091b33", command=lambda: [after_update()])
+
+
+    save = Button(frame, text='SAVE', font=('Code New Roman', 21), bg="#06e6b0", fg="#091b33",
+                  command= lambda :[after_update(),update_message()])
     save.grid(row=6, columnspan=5, column=0, ipady=10, ipadx=105)
+
 
 def after_update():
     main_database = sqlite3.connect('storemanagement.db')
@@ -693,32 +582,33 @@ def after_update():
                 email_address_vendor =:email_address,
                 contact_number= :number,
                 date= :date
-                WHERE oid = :oid""",
+                WHERE bill_no = :bill_no""",
 
               {
-                'productN':productName_entry.get(),
-                'productQ':productQuantity_entry.get(),
-                'rate':rate_entry.get(),
-                'total':totalPrice_entry.get(),
+                'productN': productName_entry.get(),
+                'productQ': productQuantity_entry.get(),
+                'rate': rate_entry.get(),
+                'total': totalPrice_entry.get(),
                 'companyN': companyName_entry.get(),
                 'address': address_entry.get(),
                 'email_address': email_entry.get(),
                 'number': contactNumber_entry.get(),
                 'date': date_entry.get(),
-                'oid': record_id
+                'bill_no': key_value
 
               }
     )
 
+    print('Updated Successfully')
 
     main_database.commit()
     main_database.close()
 
-    updatepopup.destroy()
+    data_update_popup.destroy()
 
 
-# def update_popup():
-#     messagebox.showinfo('Updated', 'Data Updated Successfully',parent=updatepopup)
+def update_message():
+    messagebox.showinfo('Updated', 'Data Updated Successfully. You can view at Total section.', parent=update)
 
 # ----------------------------------------- End of Update ----------------------------------------------------------#
 
@@ -782,7 +672,7 @@ def dashboard():
                     command=update_)
     update.grid(row=2, column=0, padx=50, ipady=15, pady=15)
 
-    total = Button(menu, padx=70, pady=30, text='Total', font=('Code New Roman', 21), bg="#06e6b0", fg="#091b33", )
+    total = Button(menu, padx=70, pady=30, text='Total', font=('Code New Roman', 21), bg="#06e6b0", fg="#091b33",command=show_total)
     total.grid(row=3, column=0, padx=52, ipady=15, pady=17)
 
     # Creating frame for date and logout section
@@ -827,6 +717,7 @@ def dashboard():
 
     # Creating input field
     inputField = Entry(calcFrame, width=55, bg="#fbfbfb", font=('Code New Roman', 14))
+    inputField.focus()
     inputField.grid(row=0, column=0, columnspan=5, padx=10, pady=10, ipadx=20, ipady=17)
 
     # Creating functions for calculator
@@ -993,9 +884,9 @@ def register():
     password_entry.delete(0, END)
 
 
-# --------------------------------- END of  Database for registration ------------------------#
+# ------------------------------------------ END of  Database for registration ---------------------------------------#
 
-#  -------------------------------------- Signup Page ---------------------------------------#
+# ------------------------------------------------- Signup Page -------------------------------------------------------#
 
 def signup():
     global firstname_entry
@@ -1017,6 +908,7 @@ def signup():
     firstname_label = Label(loginBox, text='First Name', bg="#091b33", padx=60, pady=15, fg="#f7f7f7",
                             font=('Code New Roman', 21))
     firstname_entry = Entry(loginBox, font=('helvetica', 14))
+    firstname_entry.focus()
     firstname_label.grid(row=0, column=0, padx=100, pady=10)
     firstname_entry.grid(row=1, column=0, ipadx=50, ipady=10)
 
@@ -1049,7 +941,7 @@ def signup():
     sub_btn.grid(row=10, column=0, pady=25, ipadx=40, ipady=7)
 
 
-#  --------------------------------- END of Signup Page -------------------------------------#
+#  -------------------------------------------- END of Signup Page ----------------------------------------------------#
 
 def login():
     global user_name
@@ -1060,6 +952,7 @@ def login():
 
     c.execute("SELECT * FROM authentication ")
     datas = c.fetchall()
+
     u_name = name_entry.get()
     pas = passw_entry.get()
 
@@ -1077,7 +970,7 @@ def login():
         if u_name in user_name_store and pas in pass_word_store:
             name_entry.delete(0, END)
             passw_entry.delete(0, END)
-            # messagebox.showinfo("Success", "Successfully Login")
+
             dashboard()
 
         else:
@@ -1088,7 +981,7 @@ def login():
 
 
 
-#  --------------------------------- Login Page --------------------------------------------#
+# --------------------------------------------- Login Page ----------------------------------------------------------#
 
 def home_login():
     global name_entry
@@ -1106,6 +999,7 @@ def home_login():
     name_label = Label(loginBox, text='Username', bg="#091b33", padx=60, pady=20, fg="#f7f7f7",
                        font=('Code New Roman', 21))
     name_entry = Entry(loginBox, font=('helvetica', 14))
+    name_entry.focus()
     name_label.grid(row=0, column=0, padx=100, pady=10)
     name_entry.grid(row=1, column=0, ipadx=50, ipady=10)
 
@@ -1127,7 +1021,173 @@ def home_login():
     login_setup.destroy()
 
 
-# ---------------------------------------------For Login dashboard -----------------------------#
+
+# -------------------------------------------------- Show Data -----------------------------------------------------#
+
+def show_total():
+    root = Toplevel()
+    root.geometry('1920x1080')
+    root.title('Store Management System - Total')
+    root['background'] = '#304562'
+    root.iconbitmap('C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/store.ico')
+
+    # Creating frame for tree view
+    tree_frame = Frame(root, bg='#304562')
+    tree_frame.pack(pady=7, padx=5)
+
+
+    back_home_btn = Button(tree_frame, bg='#304562', text='❮', relief=FLAT, fg='#f7f7f7', padx=20,
+                           font=('HandVetica', 21), command=lambda: root.destroy())
+    back_home_btn.place(x=30)
+
+    title = Label(tree_frame, text="Store Management System", bg='#304562', fg='#f7f7f7', font=('HandVetica', 37))
+    title.pack(side=TOP,padx=80)
+
+    # Creating clock
+    def clock():
+        hour = time.strftime('%I')
+        minute = time.strftime('%M')
+        second = time.strftime('%S')
+        unit = time.strftime('%p')
+
+        show_time.config(text=hour + ':' + minute + ':' + second + ':' + unit)
+        show_time.after(1000, clock)
+
+    # Displaying time
+    show_time = Label(tree_frame, bg='#304562', fg='#f7f7f7', text="", font=('digital-7', 22), padx=50)
+    show_time.place(x=1200,y=20)
+    clock()
+
+    # Adding style
+    style = ttk.Style()
+
+    # Choosing theme  equilux bg='#091b33'
+    style.theme_use('classic')
+
+    # Configure the tree color
+    style.configure("Treeview",
+                    background='#091b33',
+                    foreground='black',
+                    rowheight=40,
+                    fieldbackground='#091b33')
+
+    # Configure Font name and Size
+    style.configure("Treeview", font=('Code New Roman', 13))
+    style.configure("Treeview.Heading", font=('Code New Roman', 15))
+
+    # Change selected color
+    style.map('Treeview',
+              background=[('selected', '#06e6b0')])
+
+
+
+    # Creating a Tree view Scrollbar Vertical
+
+    tree_scroll = Scrollbar(tree_frame)
+    tree_scroll.pack(side=RIGHT, fill=Y)
+
+    # Creating a Tree view Scrollbar Horizontal
+
+    tree_scroll_horizontal = Scrollbar(tree_frame, orient=HORIZONTAL)
+    tree_scroll_horizontal.pack(side=BOTTOM, fill=X)
+
+    # Create the Tree view
+    my_tree = ttk.Treeview(tree_frame, yscrollcommand=tree_scroll.set, selectmode='extended',
+                           xscrollcommand=tree_scroll_horizontal.set)
+    my_tree.pack(pady=40)
+
+    # configure scrollbar
+    tree_scroll.config(command=my_tree.yview)
+    tree_scroll_horizontal.config(command=my_tree.xview)
+
+    # Data from database
+    # ------------------------------------------------------------------------------------------------
+    # connecting database to tree view
+    def connect():
+        main_database = sqlite3.connect("storemanagement.db")
+
+        cursor = main_database.cursor()
+
+        cursor.execute(
+            "CREATE TABLE IF NOT EXISTS showdata (billno INTEGER PRIMARY KEY, productname TEXT, productquantity TEXT, productrate TEXT, totalprice TEXT, companyname TEXT, address TEXT, contactnumber TEXT, email TEXT, date TEXT, productdescription TEXT)")
+
+        main_database.commit()
+        main_database.close()
+
+    # Showing data at tree view from database
+    def View():
+        main_database = sqlite3.connect("storemanagement.db")
+
+        cursor = main_database.cursor()
+
+        cursor.execute("SELECT * FROM data_storage")
+
+        rows = cursor.fetchall()
+
+        count = 0
+
+        # To loop through database data
+        for row in rows:
+            if count % 2 == 0:
+                my_tree.insert("", END, values=row, tags=('evenrow',))
+            else:
+                my_tree.insert("", END, values=row, tags=('oddrow',))
+            count += 1
+
+        main_database.close()
+
+
+
+
+    # Define column
+
+    my_tree['columns'] = (
+    'Bill No', 'Product Name', 'Product Quantity', 'Product Rate', 'Total Price', 'Company Name', 'Address',
+    'Contact Number', 'Email Address', 'Date', 'Description')
+
+    # Format column
+    my_tree.column('#0', width=0, stretch=NO)
+    my_tree.column('Bill No', anchor=W, width=100)
+    my_tree.column('Product Name', anchor=W, width=160)
+    my_tree.column('Product Quantity', anchor=CENTER, width=210)
+    my_tree.column('Product Rate', anchor=CENTER, width=160)
+    my_tree.column('Total Price', anchor=CENTER, width=160)
+    my_tree.column('Company Name', anchor=W, width=200)
+    my_tree.column('Address', anchor=W, width=160)
+    my_tree.column('Contact Number', anchor=W, width=190)
+    my_tree.column('Email Address', anchor=W, width=250)
+    my_tree.column('Date', anchor=W, width=140)
+    my_tree.column('Description', anchor=W, width=400)
+
+    # Create Heading
+    my_tree.heading('#0', text='', anchor=W)
+    my_tree.heading('Bill No', text='Bill No', anchor=W)
+    my_tree.heading('Product Name', text='Product Name', anchor=W)
+    my_tree.heading('Product Quantity', text='Product Quantity', anchor=CENTER)
+    my_tree.heading('Product Rate', text='Product Rate', anchor=CENTER)
+    my_tree.heading('Total Price', text='Total Price', anchor=CENTER)
+    my_tree.heading('Company Name', text='Company Name', anchor=CENTER)
+    my_tree.heading('Address', text='Address', anchor=CENTER)
+    my_tree.heading('Contact Number', text='Contact Number', anchor=CENTER)
+    my_tree.heading('Email Address', text='Email Address', anchor=CENTER)
+    my_tree.heading('Date', text='Date', anchor=CENTER)
+    my_tree.heading('Description', text='Description', anchor=CENTER)
+
+    # Create Striped Row Tag
+
+    my_tree.tag_configure('oddrow', background='white')
+    my_tree.tag_configure('evenrow', background='#fcf1f1')
+
+    # Button to show data
+
+    button1 = Button(tree_frame, text="View data", bg="#06e6b0",padx=20,pady=20, fg="#091b33", font=('Code New Roman', 21),
+                     command=View)
+    button1.pack(pady=60)
+
+
+#------------------------------------------------  End of Show Data -------------------------------------------------#
+
+# -----------------------------------------------------For Login dashboard ------------------------------------------#
 global name_entry
 global passw_entry
 login_setup = Tk()
@@ -1142,6 +1202,7 @@ loginBox.grid(row=0, column=0, padx=500, pady=150)
 
 name_label = Label(loginBox, text='Username', bg="#091b33", padx=60, pady=20, fg="#f7f7f7", font=('Code New Roman', 21))
 name_entry = Entry(loginBox, font=('helvetica', 14))
+name_entry.focus()
 name_label.grid(row=0, column=0, padx=100, pady=10)
 name_entry.grid(row=1, column=0, ipadx=50, ipady=10)
 
