@@ -1,4 +1,7 @@
-# Importing necessary module
+# ---------------------------------------------------------------------------------------------------------------------#
+# ---------------------------------------Importing necessary module----------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+
 import sqlite3
 from tkinter import *
 from PIL import ImageTk, Image
@@ -7,11 +10,16 @@ from tkinter import messagebox
 from tkinter import ttk
 
 
+# ---------------------------------------------------------------------------------------------------------------------#
 # -------------------------------------Creating database table --------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
 # Creating databases with sub table
 
+# ---------------------------------------------------------------------------------------------------------------------#
 # --------------------------------------- Authentication Table --------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+
 # # Database queries for Authentication
 # # # Giving database name
 # main_database = sqlite3.connect('storemanagement.db')
@@ -34,9 +42,14 @@ from tkinter import ttk
 # main_database.commit()
 # main_database.close()
 
-# --------------------------------------- End of authentication table------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+# --------------------------------------- End of authentication table--------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
-# ---------------------------------------  Data storage table -------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+# ---------------------------------------  Data storage table ---------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+
 # Database queries for Data storage
 # # Giving database name
 # main_database = sqlite3.connect('storemanagement.db')
@@ -64,16 +77,13 @@ from tkinter import ttk
 # main_database.commit()
 # main_database.close()
 
+# ---------------------------------------------------------------------------------------------------------------------#
+# ----------------------------------------- End of Data Storage table -------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
-# --------------------------------------- End of Data Storage table-----------------------------------------------#
-
-# ------------- Database for registration ------------------#
-
-# def popup():
-#     messagebox.showinfo('Added','Successfully')
-
-
-# ---------------------------------------------Stock In -----------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+# ------------------------------------------------ Stock In -----------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
 def stockin():
     global billno_entry
@@ -223,16 +233,22 @@ def stockin():
     add_stock_frame.grid(row=3, column=0, padx=350, pady=40, sticky='e')
 
     add_stock = Button(add_stock_frame, borderwidth=0, padx=60, bg='#06e6b0', fg='#091b33', pady=30, text="Add Stock",
-                       font=('Code New Roman', 21), command=lambda:[stockin_data(), showinfo()])
+                       font=('Code New Roman', 21), command=lambda: [stockin_data(), showinfo()])
     add_stock.grid(row=0, column=0, )
 
-
+# Message box for sucess
 def showinfo():
-    messagebox.showinfo('Added','Data added successfully', parent=instock)
+    messagebox.showinfo('Added', 'Data added successfully', parent=instock)
 
-# --------------------------------------------- End of Stock In -----------------------------------------------------#
 
-# ------------------------------------------Adding into Database----------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+# ---------------------------------------------- End of Stock In ------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+
+# ---------------------------------------------------------------------------------------------------------------------#
+# ------------------------------------------ Adding into Database -----------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+
 
 def stockin_data():
     main_database = sqlite3.connect('storemanagement.db')
@@ -262,6 +278,8 @@ def stockin_data():
     main_database.commit()
     main_database.close()
 
+    # To clear input field
+
     billno_entry.delete(0, END)
     productName_entry.delete(0, END)
     productQuantity_entry.delete(0, END)
@@ -271,12 +289,16 @@ def stockin_data():
     address_entry.delete(0, END)
     contactNumber_entry.delete(0, END)
     date_entry.delete(0, END)
-    email_entry.delete(0,END)
+    email_entry.delete(0, END)
     description_entry.delete('1.0', END)
 
-# ------------------------------------------End of Adding into Database---------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+# ---------------------------------------------End of Adding into Database---------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
-# -------------------------------------------- Sales ----------------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+# -------------------------------------------- Sales ------------------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
 def sales_():
     global billno_entry_
@@ -302,6 +324,7 @@ def sales_():
 
     title = Label(header, text="Store Management System", bg='#304562', fg='#f7f7f7', font=('HandVetica', 37))
     title.grid(row=0, column=1, padx=350)
+
     # Create clock
     def clock():
         hour = time.strftime('%I')
@@ -318,15 +341,13 @@ def sales_():
 
     clock()
 
-    # Creating Product Details Section
+    # Creating Product Details Section - Bill No
 
     productFrame = LabelFrame(frame, height=600, pady=10, padx=5, width=400, bg='#091b33')
     productFrame.grid(row=2, column=0, padx=5, pady=40, )
 
     title = Label(productFrame, bg='#091b33', fg='#f7f7f7', text="Product Details", font=('Code New Roman', 14))
     title.grid(row=0, column=1, padx=70)
-
-    # Entry Field
 
     billno = Label(productFrame, bg='#091b33', fg='#f7f7f7', text='Bill No', font=('Code New Roman', 14))
     billno.grid(row=1, column=0, sticky='nw')
@@ -335,21 +356,27 @@ def sales_():
     billno_entry_.focus()
     billno_entry_.grid(row=1, column=2, padx=5, ipadx=50, ipady=10)
 
-
     # Creating Sales stock section frame
 
     sales_stock_frame = LabelFrame(frame, bg='#091b33')
     sales_stock_frame.grid(row=3, column=0, padx=350, pady=40)
 
     sales_stock = Button(sales_stock_frame, borderwidth=0, padx=95, bg='#06e6b0', fg='#091b33', pady=30, text="Sales",
-                         font=('Code New Roman', 21) , command=lambda: [sales_data() , message()])
+                         font=('Code New Roman', 21), command=lambda: [sales_data(), message()])
     sales_stock.grid(row=0, column=0, )
 
-def message():
-    messagebox.showinfo('Removed' , 'Data Deleted successfully.', parent=sales)
-# -------------------------------------------- End of sales --------------------------------------------------------#
+# Message box for success
 
-# -------------------------------------------- sales data -----------------------------------------------------#
+def message():
+    messagebox.showinfo('Removed', 'Data Deleted successfully.', parent=sales)
+
+# ---------------------------------------------------------------------------------------------------------------------#
+# -------------------------------------------- End of sales -----------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+
+# ---------------------------------------------------------------------------------------------------------------------#
+# -------------------------------------------- Sales data database ----------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
 def sales_data():
     main_database = sqlite3.connect('storemanagement.db')
@@ -360,16 +387,16 @@ def sales_data():
 
     billno_entry_.delete(0, END)
 
-
-
     main_database.commit()
     main_database.close()
 
+# ---------------------------------------------------------------------------------------------------------------------#
+# -------------------------------------------- End of sales data database ---------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
-
-# -------------------------------------------- End of sales data -----------------------------------------------------#
-
-# ---------------------------------------------- Update ------------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+# ------------------------------------------------ Update -------------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
 def update_():
     global billno_entry
@@ -382,7 +409,7 @@ def update_():
     update['background'] = '#304562'
 
     # Creating root Frame for all sub frames
-    frame = Frame(update, bg='#304562',)
+    frame = Frame(update, bg='#304562', )
     frame.grid(row=0, column=0, sticky='nsew')
 
     # Creating Header Frame for Title stuff
@@ -432,8 +459,17 @@ def update_():
     update_stock_frame = LabelFrame(frame, bg='#091b33', )
     update_stock_frame.grid(row=3, column=0, padx=350, pady=40, )
 
-    update_stock = Button(update_stock_frame, borderwidth=0, padx=90, bg='#06e6b0', fg='#091b33', pady=30, text="Update",font=('Code New Roman', 21),command=update_data )
-    update_stock.grid(row=0, column=0,)
+    update_stock = Button(update_stock_frame, borderwidth=0, padx=90, bg='#06e6b0', fg='#091b33', pady=30,
+                          text="Update", font=('Code New Roman', 21), command=update_data)
+    update_stock.grid(row=0, column=0, )
+
+# ---------------------------------------------------------------------------------------------------------------------#
+# ------------------------------------------------ End of Update ------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+
+# ---------------------------------------------------------------------------------------------------------------------#
+# ----------------------------------------------- Update database -----------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
 
 def update_data():
@@ -455,7 +491,6 @@ def update_data():
     data_update_popup.iconbitmap('C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/store.ico')
     data_update_popup['background'] = '#304562'
 
-
     main_database = sqlite3.connect('storemanagement.db')
 
     # c = main_database.cursor()
@@ -464,7 +499,7 @@ def update_data():
     key_value = billno_entry.get()
     print(key_value)
 
-    cursor.execute("SELECT * FROM data_storage WHERE bill_no = "+ key_value)
+    cursor.execute("SELECT * FROM data_storage WHERE bill_no = " + key_value)
 
     infos = cursor.fetchall()
 
@@ -472,7 +507,7 @@ def update_data():
 
     billno_entry.delete(0, END)
 
-    #Design for popup
+    # Design for popup
     frame = Frame(data_update_popup, bg='#304562', )
     frame.grid(row=0, column=0, sticky='nsew')
 
@@ -511,7 +546,7 @@ def update_data():
     # Creating Vendor Details Section
 
     vendorFrame = LabelFrame(frame, pady=10, padx=10, bg='#091b33')
-    vendorFrame.grid(row=1, column=0, padx=20, pady=40,sticky='s')
+    vendorFrame.grid(row=1, column=0, padx=20, pady=40, sticky='s')
 
     title = Label(vendorFrame, bg='#091b33', fg='#f7f7f7', text="Vendor Details", font=('Code New Roman', 14))
     title.grid(row=0, column=1, padx=70)
@@ -557,11 +592,16 @@ def update_data():
         email_entry.insert(0, data[8])
         date_entry.insert(0, data[9])
 
-
-
     save = Button(frame, text='SAVE', font=('Code New Roman', 21), bg="#06e6b0", fg="#091b33",
-                  command= lambda :[after_update(),update_message()])
+                  command=lambda: [after_update(), update_message()])
     save.grid(row=6, columnspan=5, column=0, ipady=10, ipadx=105)
+# ---------------------------------------------------------------------------------------------------------------------#
+# --------------------------------------- End of update databse -------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+
+# ---------------------------------------------------------------------------------------------------------------------#
+# --------------------------------------- Update database Query -------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
 
 def after_update():
@@ -571,7 +611,7 @@ def after_update():
 
     record_id = billno_entry.get()
 
-#Must be same name as in database
+    # Must be same name as in database
     c.execute("""UPDATE data_storage SET        
                 product_name = :productN,
                 product_quantity = :productQ,
@@ -585,19 +625,19 @@ def after_update():
                 WHERE bill_no = :bill_no""",
 
               {
-                'productN': productName_entry.get(),
-                'productQ': productQuantity_entry.get(),
-                'rate': rate_entry.get(),
-                'total': totalPrice_entry.get(),
-                'companyN': companyName_entry.get(),
-                'address': address_entry.get(),
-                'email_address': email_entry.get(),
-                'number': contactNumber_entry.get(),
-                'date': date_entry.get(),
-                'bill_no': key_value
+                  'productN': productName_entry.get(),
+                  'productQ': productQuantity_entry.get(),
+                  'rate': rate_entry.get(),
+                  'total': totalPrice_entry.get(),
+                  'companyN': companyName_entry.get(),
+                  'address': address_entry.get(),
+                  'email_address': email_entry.get(),
+                  'number': contactNumber_entry.get(),
+                  'date': date_entry.get(),
+                  'bill_no': key_value
 
               }
-    )
+              )
 
     print('Updated Successfully')
 
@@ -610,9 +650,13 @@ def after_update():
 def update_message():
     messagebox.showinfo('Updated', 'Data Updated Successfully. You can view at Total section.', parent=update)
 
-# ----------------------------------------- End of Update ----------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+# ----------------------------------------- End of Update database query ----------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
-# ---------------------------------------- DASHBOARD WINDOW --------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+# ------------------------------------------- DASHBOARD WINDOW --------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
 def dashboard():
     dashboard_page = Toplevel()
@@ -672,7 +716,8 @@ def dashboard():
                     command=update_)
     update.grid(row=2, column=0, padx=50, ipady=15, pady=15)
 
-    total = Button(menu, padx=70, pady=30, text='Total', font=('Code New Roman', 21), bg="#06e6b0", fg="#091b33",command=show_total)
+    total = Button(menu, padx=70, pady=30, text='Total', font=('Code New Roman', 21), bg="#06e6b0", fg="#091b33",
+                   command=show_total)
     total.grid(row=3, column=0, padx=52, ipady=15, pady=17)
 
     # Creating frame for date and logout section
@@ -695,21 +740,21 @@ def dashboard():
     date()
 
     def log_out():
-        message = messagebox.askquestion('Logout', 'Do you want to logout ?',parent=dashboard_page)
+        message = messagebox.askquestion('Logout', 'Do you want to logout ?', parent=dashboard_page)
         if message == 'yes':
             dashboard_page.destroy()
-        elif message =='no':
+        elif message == 'no':
             dashboard_page.mainloop()
-
-
 
     # Button with icon for logout
     icon_logout = ImageTk.PhotoImage(
-    Image.open('C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/logout-white.png'))
-    logout_btn = Button(sub_header, bg='#304562', image=icon_logout, relief=FLAT,command= log_out)
+        Image.open('C:/Users/ENVY/PycharmProjects/StoreManagementSystem/images/logout-white.png'))
+    logout_btn = Button(sub_header, bg='#304562', image=icon_logout, relief=FLAT, command=log_out)
     logout_btn.grid(row=0, column=3, padx=100, ipady=12)
 
+    # -----------------------------------------------------------------------------------------------------------------#
     # Creating frame for calculator section
+    # -----------------------------------------------------------------------------------------------------------------#
 
     # Creating main frame for calculator
     calcFrame = LabelFrame(frame, bg='#091b33', borderwidth=0, padx=27, pady=15)
@@ -732,7 +777,7 @@ def dashboard():
     def clear_button():
         inputField.delete(0, END)
 
-    # To shut the project
+    # To shut the Calculator
     def power_off():
         return
         # popup = tkinter.messagebox.askokcancel('Close', 'Calculator window will be disappeared.')
@@ -855,6 +900,13 @@ def dashboard():
 
     dashboard_page.mainloop()
 
+# ---------------------------------------------------------------------------------------------------------------------#
+# -------------------------------------------- END OF DASHBOARD -------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+
+# ---------------------------------------------------------------------------------------------------------------------#
+# -------------------------------------------- REGISTER QUERY ---------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
 def register():
     main_database = sqlite3.connect('storemanagement.db')
@@ -874,7 +926,7 @@ def register():
     if firstname_entry.get() == "" or lastname_entry.get() == "" or email_entry.get() == "" or username_entry.get() == "" or password_entry.get() == "":
         messagebox.showerror("Error", "Please fill all data.")
     else:
-        messagebox.showinfo("Success", "Registration Successful")
+        messagebox.showinfo("Success", "Registration Successful.")
     # To clear screen after submission
 
     firstname_entry.delete(0, END)
@@ -883,10 +935,13 @@ def register():
     username_entry.delete(0, END)
     password_entry.delete(0, END)
 
+# ---------------------------------------------------------------------------------------------------------------------#
+# ----------------------------------------------- END OF REGISTER QUERY -----------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
-# ------------------------------------------ END of  Database for registration ---------------------------------------#
-
-# ------------------------------------------------- Signup Page -------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+# ------------------------------------------------- RREGISTER PAGE ----------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
 def signup():
     global firstname_entry
@@ -940,8 +995,14 @@ def signup():
                      command=register)
     sub_btn.grid(row=10, column=0, pady=25, ipadx=40, ipady=7)
 
+# ---------------------------------------------------------------------------------------------------------------------#
+#  -------------------------------------------- END OF REGISTER PAGE --------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
-#  -------------------------------------------- END of Signup Page ----------------------------------------------------#
+
+# ---------------------------------------------------------------------------------------------------------------------#
+# --------------------------------------- LOGIN QUERY -----------------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
 def login():
     global user_name
@@ -979,9 +1040,15 @@ def login():
     main_database.commit()
     main_database.close()
 
+# ---------------------------------------------------------------------------------------------------------------------#
+# ---------------------------------------------- END OF LOGIN QUERY ---------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+
+# ---------------------------------------------------------------------------------------------------------------------#
+# ----------------------------------------------- LOGIN POPUP ----------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
 
-# --------------------------------------------- Login Page ----------------------------------------------------------#
 
 def home_login():
     global name_entry
@@ -1020,9 +1087,13 @@ def home_login():
 
     login_setup.destroy()
 
+# ---------------------------------------------------------------------------------------------------------------------#
+# -------------------------------------------- END OF LOGIN POPUP -----------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
-
-# -------------------------------------------------- Show Data -----------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+# -------------------------------------------------- SHOW DATA --------------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
 def show_total():
     root = Toplevel()
@@ -1035,13 +1106,12 @@ def show_total():
     tree_frame = Frame(root, bg='#304562')
     tree_frame.pack(pady=7, padx=5)
 
-
     back_home_btn = Button(tree_frame, bg='#304562', text='❮', relief=FLAT, fg='#f7f7f7', padx=20,
                            font=('HandVetica', 21), command=lambda: root.destroy())
     back_home_btn.place(x=30)
 
     title = Label(tree_frame, text="Store Management System", bg='#304562', fg='#f7f7f7', font=('HandVetica', 37))
-    title.pack(side=TOP,padx=80)
+    title.pack(side=TOP, padx=80)
 
     # Creating clock
     def clock():
@@ -1055,7 +1125,7 @@ def show_total():
 
     # Displaying time
     show_time = Label(tree_frame, bg='#304562', fg='#f7f7f7', text="", font=('digital-7', 22), padx=50)
-    show_time.place(x=1200,y=20)
+    show_time.place(x=1200, y=20)
     clock()
 
     # Adding style
@@ -1078,8 +1148,6 @@ def show_total():
     # Change selected color
     style.map('Treeview',
               background=[('selected', '#06e6b0')])
-
-
 
     # Creating a Tree view Scrollbar Vertical
 
@@ -1136,14 +1204,11 @@ def show_total():
 
         main_database.close()
 
-
-
-
     # Define column
 
     my_tree['columns'] = (
-    'Bill No', 'Product Name', 'Product Quantity', 'Product Rate', 'Total Price', 'Company Name', 'Address',
-    'Contact Number', 'Email Address', 'Date', 'Description')
+        'Bill No', 'Product Name', 'Product Quantity', 'Product Rate', 'Total Price', 'Company Name', 'Address',
+        'Contact Number', 'Email Address', 'Date', 'Description')
 
     # Format column
     my_tree.column('#0', width=0, stretch=NO)
@@ -1180,14 +1245,20 @@ def show_total():
 
     # Button to show data
 
-    button1 = Button(tree_frame, text="View data", bg="#06e6b0",padx=20,pady=20, fg="#091b33", font=('Code New Roman', 21),
+    button1 = Button(tree_frame, text="View data", bg="#06e6b0", padx=20, pady=20, fg="#091b33",
+                     font=('Code New Roman', 21),
                      command=View)
     button1.pack(pady=60)
 
+# ---------------------------------------------------------------------------------------------------------------------#
+# ------------------------------------------------  END OF SHOW DATA --------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
-#------------------------------------------------  End of Show Data -------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
+# ----------------------------------------------------- FIRST LOGIN PAGE ----------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
 
-# -----------------------------------------------------For Login dashboard ------------------------------------------#
+
 global name_entry
 global passw_entry
 login_setup = Tk()
@@ -1206,7 +1277,8 @@ name_entry.focus()
 name_label.grid(row=0, column=0, padx=100, pady=10)
 name_entry.grid(row=1, column=0, ipadx=50, ipady=10)
 
-passw_label = Label(loginBox, text="Password", bg="#091b33", padx=60, pady=20, fg="#f7f7f7",font=('Code New Roman', 21))
+passw_label = Label(loginBox, text="Password", bg="#091b33", padx=60, pady=20, fg="#f7f7f7",
+                    font=('Code New Roman', 21))
 passw_entry = Entry(loginBox, show='*', font=('helvetica', 14))
 passw_label.grid(row=2, column=0, padx=100, pady=10)
 passw_entry.grid(row=3, column=0, ipadx=50, ipady=10)
@@ -1214,7 +1286,12 @@ passw_entry.grid(row=3, column=0, ipadx=50, ipady=10)
 login_btn = Button(loginBox, text=' Login ', bg="#06e6b0", fg="#091b33", font=('Code New Roman', 21), command=login)
 login_btn.grid(row=4, column=0, pady=25, ipadx=50, ipady=4)
 
-register_btn = Button(loginBox, text='Register', bg="#06e6b0", fg="#091b33", font=('Code New Roman', 21),command=signup)
+register_btn = Button(loginBox, text='Register', bg="#06e6b0", fg="#091b33", font=('Code New Roman', 21),
+                      command=signup)
 register_btn.grid(row=5, column=0, pady=25, ipadx=40, ipady=4)
 
 login_setup.mainloop()
+
+# ---------------------------------------------------------------------------------------------------------------------#
+# ----------------------------------------- END OF FIRST LOGIN PAGE ---------------------------------------------------#
+# ---------------------------------------------------------------------------------------------------------------------#
