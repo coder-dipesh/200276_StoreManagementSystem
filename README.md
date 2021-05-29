@@ -1,4 +1,4 @@
-# STORE MANAGEMENT SYSTEM 🏪
+# STORE MANAGEMENT SYSTEM:department_store:
 
 The Project **Management System Software** is developed using **Tkinter** , **Python** &amp; **SQLite3**. It's simple and easy to use. 
 
@@ -34,7 +34,7 @@ The Project **Management System Software** is developed using **Tkinter** , **Py
   </tr>
  </table>
  
- ## Features
+ ## Features feature
  
 • It provides user authentication.
 
@@ -44,6 +44,24 @@ The Project **Management System Software** is developed using **Tkinter** , **Py
 
 • It show data in tree view.
 
+• It has calculator for calculations.
+
 ## Credits
+**Websites, Blog Posts, Documentation**
+
+### Coding 👨‍💻
+
+[TkDoccs](https://tkdocs.com/) 
+
+[TutorialsPoint](https://www.tutorialspoint.com/python/python_gui_programming.htm)
+
+[GeeksforGeeks](https://www.geeksforgeeks.org/python-gui-tkinter/)
+
+[Python Guides](https://pythonguides.com/category/python-tutorials/python-tkinter/)
+
+### Icon & Color 
+[Flaticon](https://www.flaticon.com/)
+
+[Color Hunt](https://colorhunt.co/palettes/black)
 
  
